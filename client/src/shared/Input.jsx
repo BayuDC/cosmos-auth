@@ -1,4 +1,4 @@
-function Input({ id, name, type, value, setValue }) {
+function Input({ id, name, type, value, setValue, error }) {
     return (
         <div className="field">
             <label className="label" htmlFor={'input' + (id || name)}>
@@ -9,9 +9,10 @@ function Input({ id, name, type, value, setValue }) {
                 onChange={e => setValue(e.target.value)}
                 type={type || 'text'}
                 id={'input' + (id || name)}
-                className="input"
+                className={`input ${error ? 'is-danger' : ''}`}
                 autoComplete="off"
             />
+            <p className="help is-danger has-text-right">{error}</p>
         </div>
     );
 }
