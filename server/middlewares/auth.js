@@ -50,7 +50,7 @@ module.exports.authGuard = (req, res, next) => {
  * @param {import('express').NextFunction} next
  */
 module.exports.guestGuard = (req, res, next) => {
-    if (!req.user) return res.status(403).send();
+    if (req.user) return res.status(403).send();
 
     next();
 };
