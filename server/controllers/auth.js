@@ -17,12 +17,6 @@ const generateToken = user => {
  * @param {import('express').Request} req
  * @param {import('express').Response} res
  */
-module.exports.status = (req, res) => {};
-/**
- *
- * @param {import('express').Request} req
- * @param {import('express').Response} res
- */
 module.exports.signup = async (req, res) => {
     try {
         const { value, error } = userValidator.validate(req.body);
@@ -42,6 +36,7 @@ module.exports.signup = async (req, res) => {
         res.status(418).json({ error: 'Unknown error' });
     }
 };
+
 /**
  *
  * @param {import('express').Request} req
@@ -59,6 +54,7 @@ module.exports.login = async (req, res) => {
     const token = generateToken(user);
     res.status(201).json({ token });
 };
+
 /**
  *
  * @param {import('express').Request} req
