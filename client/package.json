@@ -1,0 +1,25 @@
+{
+  "name": "cosmos-auth-client",
+  "version": "0.0.0",
+  "description": "-",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BayuDC/cosmos-auth.git"
+  },
+  "author": "BayuDC",
+  "license": "MIT",
+  "dependencies": {
+    "bulma": "^0.9.3",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  }
+}
