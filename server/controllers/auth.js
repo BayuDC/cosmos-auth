@@ -1,6 +1,7 @@
-const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+const userValidator = require('../validations/user');
 
 const { secret } = require('../config');
 
@@ -23,11 +24,23 @@ module.exports.status = (req, res) => {};
  * @param {import('express').Response} res
  */
 module.exports.signup = async (req, res) => {
-    const { name, email, password } = req.body;
+    try {
+        const { value, error } = userValidator.validate(req.body);
+        if (error) throw error;
 
-    const user = await User.create({ name, email, password });
+        const user = await User.create(value);
+        const token = generateToken(user);
 
-    res.status(201).json({ user: user.id });
+        res.status(201).json({ token });
+    } catch (err) {
+        if (err.name == 'ValidationError') {
+            return res.status(422).json({ error: userValidator.format(err) });
+        }
+        if (err.name == 'MongoServerError' && err.code == 11000) {
+            return res.status(409).json({ error: { email: 'Email already registered' } });
+        }
+        res.status(418).json({ error: 'Unknown error' });
+    }
 };
 /**
  *
