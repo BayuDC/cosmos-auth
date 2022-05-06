@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import AuthLayout from '../layouts/Auth';
 
+import Input from '../shared/Input';
+
 function Login() {
     return (
         <AuthLayout>
@@ -9,22 +11,10 @@ function Login() {
                     <h1 className="title">CosmosAuth - Sign Up</h1>
                 </div>
                 <div className="block">
-                    <div className="field">
-                        <div className="label">Name</div>
-                        <input type="text" className="input" autoComplete="none" />
-                    </div>
-                    <div className="field">
-                        <div className="label">Email</div>
-                        <input type="text" className="input" autoComplete="none" />
-                    </div>
-                    <div className="field">
-                        <div className="label">Password</div>
-                        <input type="password" className="input" autoComplete="none" />
-                    </div>
-                    <div className="field">
-                        <div className="label">Confirm Password</div>
-                        <input type="password" className="input" autoComplete="none" />
-                    </div>
+                    <Input name="Name" />
+                    <Input name="Email" />
+                    <Input name="Pasword" type="password" />
+                    <Input name="Confirm Password" id="Pasword2" type="password" />
                 </div>
                 <div className="block">
                     <div className="control">
