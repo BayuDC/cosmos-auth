@@ -1,4 +1,4 @@
-function Input({ id, name, type, value, onChange }) {
+function Input({ id, name, type, value, setValue }) {
     return (
         <div className="field">
             <label className="label" htmlFor={'input' + (id || name)}>
@@ -6,11 +6,11 @@ function Input({ id, name, type, value, onChange }) {
             </label>
             <input
                 value={value}
-                onChange={onChange}
+                onChange={e => setValue(e.target.value)}
                 type={type || 'text'}
                 id={'input' + (id || name)}
                 className="input"
-                autoComplete="none"
+                autoComplete="off"
             />
         </div>
     );
