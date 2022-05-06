@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 router.get('/auth', authController.status);
 router.post('/auth/login', authController.login);
-router.post('/auth/register', authController.register);
+router.post('/auth/signup', authController.signup);
 router.get('/auth/me', authController.me);
 
 module.exports = router;
