@@ -1,11 +1,16 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AuthLayout from '../layouts/Auth';
 import Input from '../shared/Input';
 import { apiUrl } from '../config';
+import useAuth from '../hooks/auth';
 
 function Login() {
+    const auth = useAuth();
+    const navigate = useNavigate();
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,6 +27,8 @@ function Login() {
             .post(apiUrl + '/auth/signup', { name, email, password })
             .then(res => {
                 localStorage.setItem('token', res.data.token);
+                auth.load();
+                navigate('/dashboard');
             })
             .catch(err => {
                 setError(err.response.data.error);

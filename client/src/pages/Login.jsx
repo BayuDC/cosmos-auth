@@ -1,12 +1,17 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AuthLayout from '../layouts/Auth';
 import Input from '../shared/Input';
 import Alert from '../shared/Alert';
 import { apiUrl } from '../config';
+import useAuth from '../hooks/auth';
 
 function Login() {
+    const auth = useAuth();
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [notif, setNotif] = useState('');
@@ -20,6 +25,8 @@ function Login() {
             .then(res => {
                 setNotif({ message: 'Login success', color: 'success' });
                 localStorage.setItem('token', res.data.token);
+                auth.load();
+                navigate('/dashboard');
             })
             .catch(err => {
                 setNotif({ message: err.response?.data?.error || 'Unknown error', color: 'danger' });

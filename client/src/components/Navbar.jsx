@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/auth';
 
 function Navbar() {
     const [active, setActive] = useState(false);
+    const auth = useAuth();
 
     return (
         <div className="navbar is-dark">
@@ -30,14 +32,24 @@ function Navbar() {
                         </Link>
                     </div>
                     <div className="navbar-end">
-                        <Link to="signup" className="navbar-item">
-                            Sign up
-                        </Link>
-                        <div className="navbar-item">
-                            <Link to="/login" className="button is-success has-text-weight-bold">
-                                Log In
-                            </Link>
-                        </div>
+                        {auth.user ? (
+                            <div className="navbar-item">
+                                <button to="/login" className="button is-danger has-text-weight-bold">
+                                    Log out
+                                </button>
+                            </div>
+                        ) : (
+                            <>
+                                <Link to="signup" className="navbar-item">
+                                    Sign up
+                                </Link>
+                                <div className="navbar-item">
+                                    <Link to="/login" className="button is-success has-text-weight-bold">
+                                        Log In
+                                    </Link>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
