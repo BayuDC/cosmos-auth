@@ -32,5 +32,5 @@ export function AuthProvider({ children }) {
 
     if (loading) return <Loading />;
 
-    return <AuthContext.Provider value={{ user, load }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ user, load, unload }}>{children}</AuthContext.Provider>;
 }

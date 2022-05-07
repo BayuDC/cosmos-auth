@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Logout from '../components/Logout';
 import useAuth from '../hooks/auth';
 
 function Navbar() {
@@ -34,9 +35,7 @@ function Navbar() {
                     <div className="navbar-end">
                         {auth.user ? (
                             <div className="navbar-item">
-                                <button to="/login" className="button is-danger has-text-weight-bold">
-                                    Log out
-                                </button>
+                                <Logout />
                             </div>
                         ) : (
                             <>
