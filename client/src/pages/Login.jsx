@@ -26,7 +26,7 @@ function Login() {
                 setNotif({ message: 'Login success', color: 'success' });
                 localStorage.setItem('token', res.data.token);
                 auth.load();
-                navigate('/dashboard');
+                navigate('/dashboard', { replace: true });
             })
             .catch(err => {
                 setNotif({ message: err.response?.data?.error || 'Unknown error', color: 'danger' });

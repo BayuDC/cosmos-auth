@@ -28,7 +28,7 @@ function Login() {
             .then(res => {
                 localStorage.setItem('token', res.data.token);
                 auth.load();
-                navigate('/dashboard');
+                navigate('/dashboard', { replace: true });
             })
             .catch(err => {
                 setError(err.response.data.error);

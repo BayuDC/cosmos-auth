@@ -4,8 +4,8 @@ import useAuth from '../hooks/auth';
 function AuthGuard({ guest = false, children }) {
     const auth = useAuth();
 
-    if (!guest && !auth.user) return <Navigate to="/login" />;
-    if (guest && auth.user) return <Navigate to="/" />;
+    if (!guest && !auth.user) return <Navigate to="/login" replace />;
+    if (guest && auth.user) return <Navigate to="/" replace />;
 
     return <>{children}</>;
 }
