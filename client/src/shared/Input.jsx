@@ -1,4 +1,4 @@
-function Input({ id, name, type, value, setValue, error }) {
+function Input({ id, name, type = 'text', value, setValue = () => {}, error, readOnly }) {
     return (
         <div className="field">
             <label className="label" htmlFor={'input' + (id || name)}>
@@ -7,10 +7,11 @@ function Input({ id, name, type, value, setValue, error }) {
             <input
                 value={value}
                 onChange={e => setValue(e.target.value)}
-                type={type || 'text'}
+                type={type}
                 id={'input' + (id || name)}
                 className={`input ${error ? 'is-danger' : ''}`}
                 autoComplete="off"
+                readOnly={readOnly}
             />
             <p className="help is-danger has-text-right">{error}</p>
         </div>
