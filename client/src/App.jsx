@@ -3,6 +3,7 @@ import { AuthProvider } from './contexts/Auth';
 
 import MainLayout from './layouts/Main';
 import Home from './pages/Home';
+import Docs from './pages/Docs';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
@@ -15,6 +16,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<MainLayout />}>
                         <Route index element={<Home />} />
+                        <Route path="/docs" element={<Docs />} />
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/profile" element={<Profile />} />
                     </Route>
