@@ -1,5 +1,5 @@
 module.exports = {
-    port: 8080,
-    mongouri: 'mongodb://bayudc:bay@127.0.0.1:27017/cosmos-db?authSource=admin',
-    secret: 'wangy12345',
+    port: process.env.PORT,
+    mongouri: process.env.MONGO_URI,
+    secret: process.env.JWT_SECRET,
 };
